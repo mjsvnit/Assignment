@@ -1,0 +1,161 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "f90804af",
+   "metadata": {},
+   "source": [
+    "# Q1. What is data encoding? How is it useful in data science?\n",
+    "\n",
+    "Data encoding is the process of converting data from one format to another. In data science, data encoding is\n",
+    "useful for transforming data into a format that can be more easily analyzed or processed by machine learning algorithms.\n",
+    "It involves converting categorical or text-based data into numerical representations that can be understood by machine \n",
+    "learning models.\n",
+    "\n",
+    "For example, in natural language processing, data encoding is used to convert text data into numerical features\n",
+    "that can be used in machine learning models. This can involve techniques such as one-hot encoding, where each word \n",
+    "or character is represented as a binary vector, or embedding, where words are mapped to a dense vector space.\n",
+    "\n",
+    "Overall, data encoding is a crucial step in data science as it enables the efficient processing and analysis \n",
+    "of data using machine learning techniques.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c1fdab0a",
+   "metadata": {},
+   "source": [
+    "# Q2. What is nominal encoding? Provide an example of how you would use it in a real-world scenario.\n",
+    "nominal encoding and one-hot encoding are not the same. Nominal encoding refers to the process of converting categorical data into numerical data by assigning a unique numerical value to each category. One-hot encoding, on the other hand, creates a binary vector for each category, with a 1 indicating the presence of the category and a 0 indicating its absence. The choice between nominal encoding and one-hot encoding depends on the nature of the data and the specific requirements of the machine learning algorithm being used.\n",
+    "\n",
+    "\n",
+    "Nominal encoding is a data encoding technique used to convert categorical data into numerical data.  It is also known as one-hot encoding or dummy encoding. In nominal encoding, each category is assigned  a unique binary code, where one category is represented by one and the others are represented by zero.\n",
+    "\n",
+    "For example, suppose we have a dataset of fruits that contains a categorical column for \"fruit type,\" with categories \"apple,\" \"banana,\" and \"orange.\" We can use nominal encoding to convert this column into numerical data as follows:\n",
+    "\n",
+    "Fruit Type\tApple\tBanana\tOrange\n",
+    "Apple\t1\t0\t0\n",
+    "Banana\t0\t1\t0\n",
+    "Orange\t0\t0\t1\n",
+    "In this example, each category is represented by a binary code, and the presence of a category  is indicated by a value of one.\n",
+    "\n",
+    "Nominal encoding is useful in data science because many machine learning algorithms require numerical input, and nominal encoding allows us to convert categorical data into a format that can be used for modeling. Additionally, nominal encoding can improve the performance of some algorithms, as it helps to remove any implicitordering or ranking that may exist in the original categorical data."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "122c8e61",
+   "metadata": {},
+   "source": [
+    "# Q3. In what situations is nominal encoding preferred over one-hot encoding? Provide a practical example.\n",
+    "\n",
+    "Nominal encoding is preferred over one-hot encoding when the categorical variable has a large number of unique categories.\n",
+    "One-hot encoding generates a large number of columns for each unique category, which can result in a high-dimensional and sparse dataset. In such cases, nominal encoding can be used to represent the categories using a single column.\n",
+    "\n",
+    "For example, consider a dataset containing information about different food items, including their cuisine type. \n",
+    "If the cuisine type variable has many unique categories, one-hot encoding could result in a large number of columns. \n",
+    "Instead, nominal encoding could be used to represent the cuisine type using a single column with a numerical code assigned to each category (e.g., 1 for Italian, 2 for Chinese, 3 for Mexican, etc.). This approach reduces the number of columns in the dataset and can make the modeling process more efficient."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3fd3a98e",
+   "metadata": {},
+   "source": [
+    "# Q4. Suppose you have a dataset containing categorical data with 5 unique values. Which encodingtechnique would you use to transform this data into a format suitable for machine learning algorithms? Explain why you made this choice.\n",
+    "The choice of encoding technique depends on the nature of the data and the specific machine learning algorithm being used.\n",
+    "\n",
+    "If the categorical data is nominal (unordered) and the machine learning algorithm can handle this type of data, then nominal encoding can be used to represent the data using integers or other codes.\n",
+    "\n",
+    "On the other hand, if the categorical data is ordinal (ordered) or the machine learning algorithm requires binary inputs, then one-hot encoding is preferred.\n",
+    "\n",
+    "If the number of unique values in the categorical data is relatively small (e.g., less than 10), one-hot encoding can be used without significant computational cost. However, if the number of unique values is large, one-hot encoding can lead to a high-dimensional and sparse dataset, which can be computationally expensive and may lead to overfitting. In this case, other encoding techniques such as binary encoding or hash encoding may be used.\n",
+    "\n",
+    "Therefore, based on the specific situation and machine learning algorithm, the appropriate encoding technique should be chosen.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c2b636e2",
+   "metadata": {},
+   "source": [
+    "# Q5. In a machine learning project, you have a dataset with 1000 rows and 5 columns. Two of the columnsare categorical, and the remaining three columns are numerical. If you were to use nominal encoding to transform the categorical data, how many new columns would be created? Show your calculations.\n",
+    "If we use nominal encoding to transform the categorical data, a new column will be created for each unique category in the categorical feature.\n",
+    "\n",
+    "Let's assume that the first categorical feature has 4 unique categories and the second categorical feature has 6 unique categories.\n",
+    "\n",
+    "For the first categorical feature, nominal encoding will create 4 new columns. For the second categorical feature, nominal encoding will create 6 new columns.\n",
+    "\n",
+    "Therefore, the total number of new columns created will be 4 + 6 = 10."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5e601749",
+   "metadata": {},
+   "source": [
+    "# 6.You are working with a dataset containing information about different types of animals, including their species, habitat, and diet. Which encoding technique would you use to transform the categorical data into a format suitable for machine learning algorithms? Justify your answer.\n",
+    "\n",
+    "In this scenario, I would use one-hot encoding to transform the categorical data into a format suitable for machine learning algorithms. One-hot encoding would create a binary column for each unique category in the dataset, which would enable the machine learning algorithms to understand the differences between each category without assigning any numerical order to the categories. This method would be particularly useful for the \"species\" column, which likely contains multiple unique categories that are not inherently related to each other.\n",
+    "\n",
+    "Using nominal encoding in this scenario could potentially result in assigning numerical values to the categories that do not accurately represent their relationship to each other. For example, if we used label encoding and assigned numerical values of 1, 2, and 3 to three unique categories of \"species\", a machine learning algorithm might interpret that species 2 is twice as important as species 1, which may not be accurate or appropriate. Therefore, one-hot encoding would be the preferred technique in this scenario to ensure accurate and meaningful analysis of the data."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9413993c",
+   "metadata": {},
+   "source": [
+    "# Q7.You are working on a project that involves predicting customer churn for a telecommunications company. You have a dataset with 5 features, including the customer's gender, age, contract type, monthly charges, and tenure. Which encoding technique(s) would you use to transform the categorical data into numerical data? Provide a step-by-step explanation of how you would implement the encoding.\n",
+    "\n",
+    "\n",
+    "For the given dataset, we have only one categorical feature which is the contract type. We can use nominal encoding to transform this categorical feature into numerical data. Here is a step-by-step explanation of how to implement the encoding using Python:\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b7922ab5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Import the necessary libraries\n",
+    "import pandas as pd\n",
+    "from sklearn.preprocessing import LabelEncoder\n",
+    "#Load the dataset into a Pandas DataFrame:\n",
+    "df = pd.read_csv('telecom_data.csv')\n",
+    "Create a LabelEncoder object:\n",
+    "\n",
+    "le = LabelEncoder()\n",
+    "##Apply the LabelEncoder object to the categorical feature in the dataset:\n",
+    "\n",
+    "df['contract_type_encoded'] = le.fit_transform(df['contract_type'])\n",
+    "#Check the encoded dataset:\n",
+    "\n",
+    "print(df.head())\n",
+    "#The output will be a new column contract_type_encoded that contains numerical values corresponding to each of the contract types.\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
