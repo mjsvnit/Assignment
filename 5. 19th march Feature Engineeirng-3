@@ -1,0 +1,70 @@
+1.	What is Min-Max scaling, and how is it used in data preprocessing? Provide an example to illustrate its application.
+Min-max scaling is a common data preprocessing technique used to transform the values of numerical variables to a common scale, typically between 0 and 1. The idea is to scale the variables to a range where the minimum value becomes 0, the maximum value becomes 1, and the values in between are proportionally adjusted.
+Min-max scaling is useful when the range of values for different variables in the dataset varies significantly, and we want to bring them to a common scale. This can help in improving the performance of some machine learning algorithms, particularly those that use distance-based metrics, by reducing the influence of variables with large scales.
+
+2.	What is the Unit Vector technique in feature scaling, and how does it differ from Min-Max scaling? Provide an example to illustrate its application.
+The Unit Vector technique, also known as normalization, is a feature scaling method that scales the values of each feature to have a unit norm, i.e., a magnitude of 1. It is different from Min-Max scaling in that it does not scale the values to a fixed range, but rather scales the values relative to their overall magnitude. The formula for normalizing a feature vector x is as follows:
+X_norm = x / ||x||
+where ||x|| is the L2 norm of x.
+
+3.	What is PCA (Principle Component Analysis), and how is it used in dimensionality reduction? Provide an example to illustrate its application.
+Principle Component Analysis (PCA) is a popular technique used for dimensionality reduction in data analysis. PCA transforms a high-dimensional dataset into a lower-dimensional space while preserving the most important patterns and variations in the data.
+PCA works by identifying the directions in which the data varies the most, called the principal components. These principal components are new variables that are a linear combination of the original variables and are orthogonal to each other. The first principal component captures the most variation in the data, the second component captures the second-most variation, and so on.
+PCA can be applied to various domains, such as image processing, text analysis, and bioinformatics. Here's an example of PCA applied to the Iris dataset
+•	import pandas as pd
+•	import numpy as np
+•	import matplotlib.pyplot as plt
+•	from sklearn.datasets import load_iris
+•	from sklearn.decomposition import PCA
+•	# Load the Iris dataset
+•	iris = load_iris()
+•	X = iris.data
+•	y = iris.target
+•	# Scale the data
+•	from sklearn.preprocessing import StandardScaler
+•	scaler = StandardScaler()
+•	X_scaled = scaler.fit_transform(X)
+•	# Apply PCA with 2 components
+•	pca = PCA(n_components=2)
+•	X_pca = pca.fit_transform(X_scaled)
+•	# Plot the results
+•	plt.figure(figsize=(8,6))
+•	plt.scatter(X_pca[:,0], X_pca[:,1], c=y, cmap='viridis')
+•	plt.xlabel('PCA Component 1')
+•	plt.ylabel('PCA Component 2')
+•	plt.title('Iris Dataset - PCA with 2 Components')
+•	plt.show()
+
+4.	What is the relationship between PCA and Feature Extraction, and how can PCA be used for Feature Extraction? Provide an example to illustrate this concept.
+PCA (Principal Component Analysis) can be used for feature extraction by identifying the most important features or components that capture the maximum amount of variance in the dataset. In other words, PCA can be used to reduce the dimensionality of the dataset by identifying the most important features that contribute the most towards the overall variability of the data.
+The relationship between PCA and Feature Extraction is that PCA is a dimensionality reduction technique that can be used for feature extraction. Feature extraction aims to identify and extract the most important and informative features from the original dataset, while PCA identifies the most important features by transforming the original dataset into a new set of features, which are linear combinations of the original features.
+
+5.	You are working on a project to build a recommendation system for a food delivery service. The dataset contains features such as price, rating, and delivery time. Explain how you would use Min-Max scaling to preprocess the data.
+To preprocess the data for a recommendation system for a food delivery service, we can use Min-Max scaling. Min-Max scaling is a normalization technique that rescales the data within the range of 0 and 1. It is used to transform the data so that the features are on a similar scale and have the same influence on the model.
+
+To use Min-Max scaling in this scenario, we would first identify the features that need to be rescaled, such as price, rating, and delivery time. We would then apply the Min-Max scaling formula to each feature using the minimum and maximum values of the feature in the dataset.
+
+6.	You are working on a project to build a model to predict stock prices. The dataset contains many features, such as company financial data and market trends. Explain how you would use PCA to reduce the dimensionality of the dataset.
+In order to use PCA to reduce the dimensionality of the stock price dataset, we would first need to preprocess the data by scaling the features to have zero mean and unit variance, using techniques such as StandardScaler or Min-Max scaling.
+Once the data has been preprocessed, we can use PCA to identify the principal components of the dataset - that is, the linear combinations of the original features that explain the most variance in the data. We can choose to retain a certain number of these principal components, which will effectively reduce the dimensionality of the dataset.
+For example, let's say we have a dataset with 20 features, and we want to reduce it to just 5 features using PCA. We would first preprocess the data by scaling the features, and then use PCA to identify the top 5 principal components of the dataset. We would then transform the original dataset into a new dataset with just these 5 principal components as the features, effectively reducing the dimensionality of the dataset while retaining the most important information.
+Once the dimensionality has been reduced, we can then train a model to predict the stock prices using the transformed dataset.
+
+7.	For a dataset containing the following values: [1, 5, 10, 15, 20], perform Min-Max scaling to transform the values to a range of -1 to 1.
+To perform Min-Max scaling on the given dataset to transform the values to a range of -1 to 1, we can use the following formula:
+x_scaled = 2*(x - min(x)) / (max(x) - min(x)) - 1
+where x is the original value, min(x) is the minimum value in the dataset, and max(x) is the maximum value in the dataset.
+Using this formula, we can scale the given dataset as follows:
+min_val = 1
+max_val = 20
+scaled_data = [2*(x-min_val)/(max_val-min_val)-1 for x in [1, 5, 10, 15, 20]]
+The scaled dataset would be:
+[-1.0, -0.5, 0.0, 0.5, 1.0]
+
+
+
+
+
+
+
+
